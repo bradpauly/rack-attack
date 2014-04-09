@@ -2,6 +2,8 @@ language: ruby
 # Temporary workaround for minitest 4.7.5 installation error on ruby 2.1.0
 before_install:
   - gem install bundler -v '>= 1.5.1'
+  # Wait for memcached to start. Workaround flaky test failures.
+  - while ! echo 'stats' | nc 127.0.0.1 11211 > /dev/null; do sleep 0.1; done
 rvm:
   #- 1.9.3
   #- 2.0.0
