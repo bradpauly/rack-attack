@@ -20,8 +20,8 @@ describe Rack::Attack::Cache do
     #ActiveSupport::Cache::MemoryStore.new,
     #ActiveSupport::Cache::DalliStore.new("localhost"),
     #ActiveSupport::Cache::RedisStore.new("localhost"),
-    Dalli::Client.new,
-    #ConnectionPool.new { Dalli::Client.new },
+    #Dalli::Client.new,
+    ConnectionPool.new { Dalli::Client.new },
     #Redis::Store.new
   ]
 
