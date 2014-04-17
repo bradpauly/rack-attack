@@ -37,6 +37,7 @@ describe 'when Memcached is offline' do
     Dalli.logger.level = Logger::FATAL
 
     @cache = Rack::Attack::Cache.new
+    @cache.store = ActiveSupport::Cache::DalliStore.new("127.0.0.1:22122")
     @cache.store = Dalli::Client.new('127.0.0.1:22122')
   }
 
